@@ -2,7 +2,6 @@ package com.example.parliamentmembers.database
 
 import androidx.room.*
 
-
 /*
     Name: Juho Salomäki
     Student ID: 2110591
