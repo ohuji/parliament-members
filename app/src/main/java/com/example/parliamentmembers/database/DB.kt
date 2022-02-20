@@ -14,7 +14,7 @@ import com.example.parliamentmembers.ParliamentApp
  */
 
 //Database initialization.
-@Database(entities = [ParliamentMember::class], version = 1, exportSchema = false)
+@Database(entities = [ParliamentMember::class], version = 2, exportSchema = false)
 abstract class MpDB: RoomDatabase() {
     abstract val mpDAO: MpDao
     companion object {

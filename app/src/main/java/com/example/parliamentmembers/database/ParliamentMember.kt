@@ -11,8 +11,7 @@ import androidx.room.*
 //ParliamentMember entity.
 @Entity
 data class ParliamentMember (
-    @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    @PrimaryKey(autoGenerate = false)
     val personNumber: Int,
     val seatNumber: Int = 0,
     val last: String,
@@ -29,5 +28,5 @@ data class ParliamentMember (
 @Dao
 interface MpDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertOrUpdate(mp: ParliamentMember)
+    fun insertAllOrUpdate(mps: List<ParliamentMember>)
 }
