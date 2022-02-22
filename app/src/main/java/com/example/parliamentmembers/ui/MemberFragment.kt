@@ -22,7 +22,7 @@ class MemberFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentMemberBinding>(inflater,
-            R.layout.fragment_main, container, false)
+            R.layout.fragment_member, container, false)
 
         return binding.root
     }

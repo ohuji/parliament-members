@@ -2,4 +2,7 @@
     <string name="app_name">Parliamentmembers</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome">Welcome!</string>
+    <string name="info">Parliamentmembers is an application where you can search different members of finnish parliament. By pressing the button below you can start finding information about different MPs. Happy searching!</string>
+    <string name="start">Start</string>
 </resources>

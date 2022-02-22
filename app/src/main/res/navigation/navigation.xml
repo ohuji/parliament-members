@@ -7,5 +7,13 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.parliamentmembers.ui.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_partySearchFragment"
+            app:destination="@id/partySearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/partySearchFragment"
+        android:name="com.example.parliamentmembers.ui.PartySearchFragment"
+        android:label="PartySearchFragment" />
 </navigation>

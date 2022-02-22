@@ -22,7 +22,7 @@ class PartySearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentPartySearchBinding>(inflater,
-            R.layout.fragment_main, container, false)
+            R.layout.fragment_party_search, container, false)
 
         return binding.root
     }
