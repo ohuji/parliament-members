@@ -1,5 +1,7 @@
 package com.example.parliamentmembers.database
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 /*
@@ -29,4 +31,6 @@ data class ParliamentMember (
 interface MpDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllOrUpdate(mps: List<ParliamentMember>)
+    @Query("select distinct party from ParliamentMember")
+    fun getParties(): LiveData<List<String>>
 }

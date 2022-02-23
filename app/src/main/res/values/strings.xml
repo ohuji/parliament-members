@@ -5,4 +5,7 @@
     <string name="welcome">Welcome!</string>
     <string name="info">Parliamentmembers is an application where you can search different members of finnish parliament. By pressing the button below you can start finding information about different MPs. Happy searching!</string>
     <string name="start">Start</string>
+    <string name="center_right">Center-right</string>
+    <string name="members">Members</string>
+    <string name="kokoomus">Kansallinen kokoomus</string>
 </resources>
