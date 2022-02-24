@@ -1,15 +1,24 @@
 package com.example.parliamentmembers.adapters
 
 import android.content.Context
-import android.util.Log
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parliamentmembers.R
+import com.example.parliamentmembers.ui.PartyMemberSearchFragment
+import com.example.parliamentmembers.ui.PartySearchFragmentDirections
+
+/*
+    Name: Juho Salomäki
+    Student ID: 2110591
+    Date: 24.2.2022
+ */
 
 class PartyListAdapter(private val context: Context): ListAdapter<String, PartyViewHolder>(PartyDiffCB()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PartyViewHolder {
@@ -20,7 +29,16 @@ class PartyListAdapter(private val context: Context): ListAdapter<String, PartyV
     override fun onBindViewHolder(holder: PartyViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.p_name).text = getItem(position)
         holder.itemView.setOnClickListener {
-            Log.d("moromoro", getItem(position))
+            val args = Bundle()
+            val party = getItem(position)
+
+            val frag = PartyMemberSearchFragment()
+
+            frag.arguments = args
+
+            it?.findNavController()?.navigate(PartySearchFragmentDirections
+                .actionPartySearchFragmentToPartyMemberSearchFragment(party))
+
         }
     }
 }

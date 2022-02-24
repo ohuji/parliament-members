@@ -1,6 +1,7 @@
 package com.example.parliamentmembers.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,10 @@ class PartyMemberSearchFragment : Fragment() {
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentPartyMemberSearchBinding>(inflater,
             R.layout.fragment_party_member_search, container, false)
+
+        val args = PartyMemberSearchFragmentArgs.fromBundle(requireArguments())
+
+        Log.d("testit", args.toString())
 
         return binding.root
     }

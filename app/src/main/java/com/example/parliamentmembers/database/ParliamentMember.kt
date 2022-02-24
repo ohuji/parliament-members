@@ -33,4 +33,6 @@ interface MpDao {
     fun insertAllOrUpdate(mps: List<ParliamentMember>)
     @Query("select distinct party from ParliamentMember")
     fun getParties(): LiveData<List<String>>
+    @Query("select * from ParliamentMember")
+    fun getMembers(): LiveData<List<ParliamentMember>>
 }

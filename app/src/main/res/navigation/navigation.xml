@@ -15,5 +15,17 @@
     <fragment
         android:id="@+id/partySearchFragment"
         android:name="com.example.parliamentmembers.ui.PartySearchFragment"
-        android:label="PartySearchFragment" />
+        android:label="PartySearchFragment" >
+        <action
+            android:id="@+id/action_partySearchFragment_to_partyMemberSearchFragment"
+            app:destination="@id/partyMemberSearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/partyMemberSearchFragment"
+        android:name="com.example.parliamentmembers.ui.PartyMemberSearchFragment"
+        android:label="PartyMemberSearchFragment" >
+        <argument
+            android:name="party"
+            app:argType="string" />
+    </fragment>
 </navigation>

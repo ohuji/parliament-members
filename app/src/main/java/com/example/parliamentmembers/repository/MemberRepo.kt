@@ -14,6 +14,7 @@ import kotlinx.coroutines.withContext
 
 object MemberRepo {
     val parties = MpDB.getInstance().mpDAO.getParties()
+    val members = MpDB.getInstance().mpDAO.getMembers()
 
     suspend fun refreshDB() {
         withContext(Dispatchers.IO) {
