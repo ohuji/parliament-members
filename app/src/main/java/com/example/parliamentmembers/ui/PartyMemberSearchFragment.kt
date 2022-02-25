@@ -7,8 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parliamentmembers.R
+import com.example.parliamentmembers.adapters.PartyMemberListAdapter
 import com.example.parliamentmembers.databinding.FragmentPartyMemberSearchBinding
+import com.example.parliamentmembers.viewmodels.PartyMemberSearchViewModel
+import com.example.parliamentmembers.viewmodels.PartyMemberSearchViewModelFactory
 
 /*
     Name: Juho Salomäki
@@ -27,7 +32,17 @@ class PartyMemberSearchFragment : Fragment() {
 
         val args = PartyMemberSearchFragmentArgs.fromBundle(requireArguments())
 
-        Log.d("testit", args.toString())
+        val viewModelFactory = PartyMemberSearchViewModelFactory(args.toString())
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(PartyMemberSearchViewModel::class.java)
+
+        val adapter = PartyMemberListAdapter(requireContext())
+
+        binding.partyMemberView.adapter = adapter
+        binding.partyMemberView.layoutManager = LinearLayoutManager(requireContext())
+
+        viewModel.filteredMembers.observe(requireActivity()) {
+            adapter.submitList(it)
+        }
 
         return binding.root
     }
