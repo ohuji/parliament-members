@@ -27,5 +27,34 @@
         <argument
             android:name="party"
             app:argType="string" />
+        <action
+            android:id="@+id/action_partyMemberSearchFragment_to_memberFragment"
+            app:destination="@id/memberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/memberFragment"
+        android:name="com.example.parliamentmembers.ui.MemberFragment"
+        android:label="MemberFragment" >
+        <argument
+            android:name="personNumber"
+            app:argType="integer" />
+        <argument
+            android:name="seatNumber"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="minister"
+            app:argType="boolean" />
+        <argument
+            android:name="pic"
+            app:argType="string" />
+        <argument
+            android:name="bornYear"
+            app:argType="integer" />
+        <argument
+            android:name="constituency"
+            app:argType="string" />
     </fragment>
 </navigation>

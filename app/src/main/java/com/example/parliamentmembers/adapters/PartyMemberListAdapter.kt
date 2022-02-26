@@ -1,16 +1,20 @@
 package com.example.parliamentmembers.adapters
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parliamentmembers.R
 import com.example.parliamentmembers.database.ParliamentMember
+import com.example.parliamentmembers.ui.MemberFragment
+import com.example.parliamentmembers.ui.PartyMemberSearchFragmentDirections
 import com.squareup.picasso.Picasso
 
 /*
@@ -26,12 +30,37 @@ class PartyMemberListAdapter(private val context: Context): ListAdapter<Parliame
     }
 
     override fun onBindViewHolder(holder: PartyMemberViewHolder, position: Int) {
-        holder.itemView.findViewById<TextView>(R.id.mpl_text).text =
-            "${getItem(position).first} ${getItem(position).last}"
+        val name = "${getItem(position).first} ${getItem(position).last}"
+
+        holder.itemView.findViewById<TextView>(R.id.mpl_text).text = name
 
         val iView = holder.itemView.findViewById<ImageView>(R.id.image_mpl)
         Picasso.get().load("https://avoindata.eduskunta.fi/${getItem(position).picture}").into(iView)
 
+        holder.itemView.setOnClickListener {
+            val args = Bundle()
+
+            val personNumber = getItem(position).personNumber
+            val seatNumber = getItem(position).seatNumber
+            val minister = getItem(position).minister
+            val pic = getItem(position).picture
+            val bornYear = getItem(position).bornYear
+            val constituency = getItem(position).constituency
+
+            val frag = MemberFragment()
+
+            frag.arguments = args
+
+            it?.findNavController()?.navigate(PartyMemberSearchFragmentDirections
+                .actionPartyMemberSearchFragmentToMemberFragment(
+                    personNumber,
+                    seatNumber,
+                    name,
+                    minister,
+                    pic,
+                    bornYear,
+                    constituency))
+        }
     }
 }
 
