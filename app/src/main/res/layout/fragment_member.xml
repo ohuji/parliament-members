@@ -10,78 +10,122 @@
         android:background="@color/lightest_blue"
         tools:context=".ui.MemberFragment">
 
+
         <androidx.cardview.widget.CardView
             android:id="@+id/member_card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginVertical="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="10dp"
             android:backgroundTint="@color/yellowish"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/member_image"
-                android:layout_marginTop="25dp"
+                android:layout_width="200dp"
+                android:layout_height="270dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_width="210dp"
-                android:layout_height="300dp"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/mp_img_desc"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/member_name"
-                android:layout_marginTop="330dp"
-                android:layout_gravity="center_horizontal"
-                android:textSize="26sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="300dp"
+                android:text=""
                 android:textColor="@color/reddish"
-                android:text="" />
+                android:textSize="26sp" />
 
             <TextView
                 android:id="@+id/member_pn"
-                android:layout_marginTop="420dp"
-                android:layout_marginStart="30dp"
-                android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="400dp"
+                android:text=""
                 android:textColor="@color/dark_blue"
-                android:text="" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/member_sn"
-                android:layout_marginTop="450dp"
-                android:layout_marginStart="30dp"
-                android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="430dp"
+                android:text=""
                 android:textColor="@color/dark_blue"
-                android:text="" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/member_minister"
-                android:layout_marginTop="480dp"
-                android:layout_marginStart="30dp"
-                android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="460dp"
+                android:text=""
                 android:textColor="@color/dark_blue"
-                android:text="" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/member_cons"
-                android:layout_marginTop="510dp"
-                android:layout_marginStart="30dp"
-                android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="490dp"
+                android:text=""
+                android:layout_marginBottom="20dp"
                 android:textColor="@color/dark_blue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/karma_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="350dp"
+                android:textColor="@color/dark_blue"
+                android:textSize="17sp"
+                android:layout_gravity="center_horizontal"
                 android:text="" />
+
+            <ImageButton
+                android:id="@+id/thumb_up_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="340dp"
+                app:srcCompat="@drawable/baseline_thumb_up_24" />
+
+            <ImageButton
+                android:id="@+id/thumb_down_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="225dp"
+                android:layout_marginTop="340dp"
+                app:srcCompat="@drawable/baseline_thumb_down_24" />
+
         </androidx.cardview.widget.CardView>
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notes_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

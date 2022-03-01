@@ -3,6 +3,7 @@ package com.example.parliamentmembers.database
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.room.*
+import java.sql.Timestamp
 
 /*
     Name: Juho Salomäki
@@ -23,7 +24,17 @@ data class ParliamentMember (
     val picture: String = "",
     val twitter: String = "",
     val bornYear: Int = 0,
-    val constituency: String = ""
+    val constituency: String = "",
+    val karma: Int = 100
+)
+
+@Entity
+data class Notes (
+    @PrimaryKey(autoGenerate = true)
+    val id: Long,
+    val personNumber: Int,
+    val note: String,
+    val timestamp: Timestamp
 )
 
 //Dao for handling mp_db queries.
@@ -35,4 +46,6 @@ interface MpDao {
     fun getParties(): LiveData<List<String>>
     @Query("select * from ParliamentMember")
     fun getMembers(): LiveData<List<ParliamentMember>>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertOrUpdate(mp: ParliamentMember)
 }

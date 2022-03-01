@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.parliamentmembers.R
 import com.example.parliamentmembers.databinding.FragmentMemberBinding
+import com.example.parliamentmembers.viewmodels.MemberViewModel
+import com.example.parliamentmembers.viewmodels.MemberViewModelFactory
 import com.squareup.picasso.Picasso
 
 /*
@@ -27,6 +30,9 @@ class MemberFragment : Fragment() {
 
         val args = MemberFragmentArgs.fromBundle(requireArguments())
 
+        val viewModelFactory = MemberViewModelFactory(args.personNumber)
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(MemberViewModel::class.java)
+
         val name = "${args.name} ${args.bornYear}-"
         val personNumber = "Person Number: ${args.personNumber}"
         val seatNumber = "Seat Number: ${args.seatNumber}"
@@ -42,6 +48,46 @@ class MemberFragment : Fragment() {
         val iView = binding.memberImage
 
         Picasso.get().load("https://avoindata.eduskunta.fi/${args.pic}").fit().into(iView)
+
+        viewModel.karma.observe(requireActivity()) { mp ->
+            binding.karmaView.text = mp[0].karma.toString()
+
+            binding.thumbUpBtn.setOnClickListener {
+                val newKarma = mp[0].karma.plus(5)
+
+                viewModel.insertOrUpdate(
+                    mp[0].personNumber,
+                    mp[0].seatNumber,
+                    mp[0].last,
+                    mp[0].first,
+                    mp[0].party,
+                    mp[0].minister,
+                    mp[0].picture,
+                    mp[0].twitter,
+                    mp[0].bornYear,
+                    mp[0].constituency,
+                    newKarma
+                )
+            }
+
+            binding.thumbDownBtn.setOnClickListener {
+                val newKarma = mp[0].karma.minus(5)
+
+                viewModel.insertOrUpdate(
+                    mp[0].personNumber,
+                    mp[0].seatNumber,
+                    mp[0].last,
+                    mp[0].first,
+                    mp[0].party,
+                    mp[0].minister,
+                    mp[0].picture,
+                    mp[0].twitter,
+                    mp[0].bornYear,
+                    mp[0].constituency,
+                    newKarma
+                )
+            }
+        }
 
         return binding.root
     }

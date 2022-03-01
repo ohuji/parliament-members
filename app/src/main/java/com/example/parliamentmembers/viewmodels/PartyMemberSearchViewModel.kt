@@ -1,7 +1,7 @@
 package com.example.parliamentmembers.viewmodels
 
 import androidx.lifecycle.*
-import com.example.parliamentmembers.database.MpDB
+import com.example.parliamentmembers.repository.MemberRepo
 
 /*
     Name: Juho Salomäki
@@ -11,7 +11,7 @@ import com.example.parliamentmembers.database.MpDB
 
 class PartyMemberSearchViewModel(args: String): ViewModel() {
     private val party = args
-    private val members = MpDB.getInstance().mpDAO.getMembers()
+    private val members = MemberRepo.members
 
     val filteredMembers = Transformations.map(members) { list ->
         list.filter {
