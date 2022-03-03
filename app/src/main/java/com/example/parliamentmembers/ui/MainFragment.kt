@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.parliamentmembers.R
 import com.example.parliamentmembers.databinding.FragmentMainBinding
+import com.squareup.picasso.Picasso
 
 /*
     Name: Juho Salomäki
@@ -24,6 +25,9 @@ class MainFragment : Fragment() {
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentMainBinding>(inflater,
             R.layout.fragment_main, container, false)
+
+        Picasso.get().load("https://live.staticflickr.com/65535/51857994408_ec17a04309_h.jpg")
+            .into(binding.parliamentImg)
 
         binding.startButton.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_mainFragment_to_partySearchFragment)

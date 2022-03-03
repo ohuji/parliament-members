@@ -10,4 +10,10 @@
     <color name="lightest_blue">#A8D0E6</color>
     <color name="reddish">#F76C6C</color>
     <color name="yellowish">#F8E9A1</color>
+    <color name="green">#00B600</color>
+    <color name="orange">#FF8700</color>
+    <color name="bright_blue">#0074BF</color>
+    <color name="dark_grey">#2d2d30</color>
+    <color name="grey">#3e3e42</color>
+    <color name="darkest_grey">#252526</color>
 </resources>
