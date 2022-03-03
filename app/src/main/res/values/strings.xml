@@ -10,4 +10,10 @@
     <string name="kokoomus">Kansallinen kokoomus</string>
     <string name="mp_img_desc">Image of parliament member</string>
     <string name="by_pressing_the_button_below_you_can_start_searching">By pressing the start button below you can start searching!</string>
+    <string name="create_a_new_note">Create a new note</string>
+    <string name="add_a_new_note">Add a new note</string>
+    <string name="add_note">Add note</string>
+    <string name="write_your_note_here">Write your note here...</string>
+    <string name="thumb_down">thumb down</string>
+    <string name="thumb_up">thumb up</string>
 </resources>

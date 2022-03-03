@@ -56,5 +56,37 @@
         <argument
             android:name="constituency"
             app:argType="string" />
+        <action
+            android:id="@+id/action_memberFragment_to_newNoteFragment"
+            app:destination="@id/newNoteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newNoteFragment"
+        android:name="com.example.parliamentmembers.ui.NewNoteFragment"
+        android:label="NewNoteFragment" >
+        <action
+            android:id="@+id/action_newNoteFragment_to_memberFragment"
+            app:destination="@id/memberFragment" />
+        <argument
+            android:name="personNumber"
+            app:argType="integer" />
+        <argument
+            android:name="seatNumber"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="minister"
+            app:argType="boolean" />
+        <argument
+            android:name="pic"
+            app:argType="string" />
+        <argument
+            android:name="bornYear"
+            app:argType="integer" />
+        <argument
+            android:name="constituency"
+            app:argType="string" />
     </fragment>
 </navigation>

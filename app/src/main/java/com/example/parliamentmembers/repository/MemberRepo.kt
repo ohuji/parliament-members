@@ -1,6 +1,7 @@
 package com.example.parliamentmembers.repository
 
 import com.example.parliamentmembers.database.MpDB
+import com.example.parliamentmembers.database.Note
 import com.example.parliamentmembers.database.ParliamentMember
 import com.example.parliamentmembers.network.MemberApi
 import kotlinx.coroutines.Dispatchers
@@ -16,12 +17,26 @@ import kotlinx.coroutines.withContext
 object MemberRepo {
     val parties = MpDB.getInstance().mpDAO.getParties()
     val members = MpDB.getInstance().mpDAO.getMembers()
+    val notes = MpDB.getInstance().mpDAO.getNotes()
 
     suspend fun refreshDB() {
         withContext(Dispatchers.IO) {
             val members = MemberApi.retrofitService.getMpList()
             MpDB.getInstance().mpDAO.insertAllOrUpdate(members)
         }
+    }
+
+    suspend fun addNote(
+        personNumber: Int,
+        noteText: String
+    ) {
+        MpDB.getInstance()
+            .mpDAO
+            .addNote(Note(
+                    personNumber,
+                    noteText,
+                    timestamp = System.currentTimeMillis())
+            )
     }
 
     suspend fun insertOrUpdate(

@@ -1,13 +1,14 @@
 package com.example.parliamentmembers.ui
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parliamentmembers.R
+import com.example.parliamentmembers.adapters.NotesAdapter
 import com.example.parliamentmembers.databinding.FragmentMemberBinding
 import com.example.parliamentmembers.viewmodels.MemberViewModel
 import com.example.parliamentmembers.viewmodels.MemberViewModelFactory
@@ -20,6 +21,10 @@ import com.squareup.picasso.Picasso
  */
 
 class MemberFragment : Fragment() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +32,11 @@ class MemberFragment : Fragment() {
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentMemberBinding>(inflater,
             R.layout.fragment_member, container, false)
+
+        val adapter = NotesAdapter(requireContext())
+
+        binding.notesView.adapter = adapter
+        binding.notesView.layoutManager = LinearLayoutManager(requireContext())
 
         val args = MemberFragmentArgs.fromBundle(requireArguments())
 
@@ -89,7 +99,48 @@ class MemberFragment : Fragment() {
             }
         }
 
+        viewModel.note.observe(requireActivity()) {
+            adapter.submitList(it)
+        }
+
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.options_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.new_note -> {
+            val oldArgs = MemberFragmentArgs.fromBundle(requireArguments())
+            val args = Bundle()
+
+            val personNumber = oldArgs.personNumber
+            val seatNumber = oldArgs.seatNumber
+            val name = oldArgs.name
+            val minister = oldArgs.minister
+            val pic = oldArgs.pic
+            val bornYear = oldArgs.bornYear
+            val constituency = oldArgs.constituency
+
+            this.arguments = args
+
+            view?.findNavController()?.navigate(MemberFragmentDirections
+                .actionMemberFragmentToNewNoteFragment(
+                    personNumber,
+                    seatNumber,
+                    name,
+                    minister,
+                    pic,
+                    bornYear,
+                    constituency))
+
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
     }
 
 }

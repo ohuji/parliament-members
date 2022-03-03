@@ -13,6 +13,13 @@ import kotlinx.coroutines.launch
 class MemberViewModel(args: Int): ViewModel() {
     private val personNumber = args
     private val members = MemberRepo.members
+    private val notes = MemberRepo.notes
+
+    val note = Transformations.map(notes) { list ->
+        list.filter {
+            it.personNumber == personNumber
+        }
+    }
 
     val karma = Transformations.map(members) { list ->
         list.filter {

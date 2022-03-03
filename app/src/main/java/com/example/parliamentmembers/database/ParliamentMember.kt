@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import java.sql.Timestamp
+import java.time.format.DateTimeFormatter
 
 /*
     Name: Juho Salomäki
@@ -29,12 +30,12 @@ data class ParliamentMember (
 )
 
 @Entity
-data class Notes (
-    @PrimaryKey(autoGenerate = true)
-    val id: Long,
+data class Note (
     val personNumber: Int,
-    val note: String,
-    val timestamp: Timestamp
+    val noteText: String,
+    val timestamp: Long,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0
 )
 
 //Dao for handling mp_db queries.
@@ -48,4 +49,8 @@ interface MpDao {
     fun getMembers(): LiveData<List<ParliamentMember>>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrUpdate(mp: ParliamentMember)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addNote(note: Note)
+    @Query("select * from Note order by id")
+    fun getNotes(): LiveData<List<Note>>
 }
