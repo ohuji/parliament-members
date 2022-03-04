@@ -20,6 +20,7 @@ import com.example.parliamentmembers.ui.PartySearchFragmentDirections
     Date: 24.2.2022
  */
 
+//Adapter for PartSearchFragment
 class PartyListAdapter(private val context: Context): ListAdapter<String, PartyViewHolder>(PartyDiffCB()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PartyViewHolder {
         val itemView = LayoutInflater.from(context).inflate(R.layout.party_item_layout, parent, false)
@@ -28,6 +29,8 @@ class PartyListAdapter(private val context: Context): ListAdapter<String, PartyV
 
     override fun onBindViewHolder(holder: PartyViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.p_name).text = getItem(position)
+
+        //OnClick navigate to PartyMemberSearchFragment with party argument.
         holder.itemView.setOnClickListener {
             val args = Bundle()
             val party = getItem(position)

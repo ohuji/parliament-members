@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso
     Date: 17.2.2022
  */
 
+//MainFragment, when application starts this is shown.
 class MainFragment : Fragment() {
 
     override fun onCreateView(

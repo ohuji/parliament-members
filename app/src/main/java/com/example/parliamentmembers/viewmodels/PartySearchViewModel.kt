@@ -10,6 +10,8 @@ import com.example.parliamentmembers.repository.MemberRepo
     Date: 24.2.2022
  */
 
+//ViewModel for PartySearchFragment.
 class PartySearchViewModel(application: Application): AndroidViewModel(application) {
+    //Get Parties.
     val dbParties = MemberRepo.parties
 }

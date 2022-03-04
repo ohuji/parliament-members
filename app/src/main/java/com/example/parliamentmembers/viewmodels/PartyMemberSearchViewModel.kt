@@ -9,10 +9,13 @@ import com.example.parliamentmembers.repository.MemberRepo
     Date: 25.2.2022
  */
 
+//ViewModel for PartyMemberSearchFragment.
 class PartyMemberSearchViewModel(args: String): ViewModel() {
+    //Get arguments and members.
     private val party = args
     private val members = MemberRepo.members
 
+    //Filter members by party.
     val filteredMembers = Transformations.map(members) { list ->
         list.filter {
             "PartyMemberSearchFragmentArgs{party=${it.party}}" == party

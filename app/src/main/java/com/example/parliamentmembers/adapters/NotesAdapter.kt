@@ -1,19 +1,15 @@
 package com.example.parliamentmembers.adapters
 
 import android.content.Context
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parliamentmembers.R
 import com.example.parliamentmembers.database.Note
-import com.example.parliamentmembers.ui.PartyMemberSearchFragment
-import com.example.parliamentmembers.ui.PartySearchFragmentDirections
 
 /*
     Name: Juho Salomäki
@@ -21,6 +17,7 @@ import com.example.parliamentmembers.ui.PartySearchFragmentDirections
     Date: 3.3.2022
  */
 
+//Adapter to NewNoteFragment.
 class NotesAdapter(private val context: Context): ListAdapter<Note, NoteViewHolder>(NoteDiffCB()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val itemView = LayoutInflater.from(context).inflate(R.layout.note_item_layout, parent, false)
@@ -29,7 +26,6 @@ class NotesAdapter(private val context: Context): ListAdapter<Note, NoteViewHold
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.n_text).text = getItem(position).noteText
-
     }
 }
 

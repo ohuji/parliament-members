@@ -13,6 +13,8 @@ import retrofit2.http.GET
     Date: 20.2.2022
  */
 
+//Retrieve data from network using retrofit. Moshi for making json into objects
+
 private const val BASE_URL = "https://users.metropolia.fi/~peterh/"
 
 private val moshi = Moshi.Builder()

@@ -13,12 +13,15 @@ import kotlinx.coroutines.withContext
     Date: 17.2.2022
  */
 
-
+//Repository
 object MemberRepo {
+    //Get data from database.
     val parties = MpDB.getInstance().mpDAO.getParties()
     val members = MpDB.getInstance().mpDAO.getMembers()
     val notes = MpDB.getInstance().mpDAO.getNotes()
 
+
+    //Retrieving fetched data and insert it to database.
     suspend fun refreshDB() {
         withContext(Dispatchers.IO) {
             val members = MemberApi.retrofitService.getMpList()
@@ -26,6 +29,7 @@ object MemberRepo {
         }
     }
 
+    //Insert note to database
     suspend fun addNote(
         personNumber: Int,
         noteText: String
@@ -39,6 +43,7 @@ object MemberRepo {
             )
     }
 
+    //Insert ParliamentMember to database.
     suspend fun insertOrUpdate(
         personNumber: Int,
         seatNumber: Int,

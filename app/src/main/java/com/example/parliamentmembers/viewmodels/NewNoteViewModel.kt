@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
     Date: 3.3.2022
  */
 
+//ViewModel for NewNoteFragment.
 class NewNoteViewModel(application: Application): AndroidViewModel(application) {
 
     fun addNote(personNumber: Int, noteText: String) {

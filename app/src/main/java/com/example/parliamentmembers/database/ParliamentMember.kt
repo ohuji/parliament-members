@@ -1,10 +1,7 @@
 package com.example.parliamentmembers.database
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
-import java.sql.Timestamp
-import java.time.format.DateTimeFormatter
 
 /*
     Name: Juho Salomäki
@@ -29,6 +26,7 @@ data class ParliamentMember (
     val karma: Int = 100
 )
 
+//Note Entity
 @Entity
 data class Note (
     val personNumber: Int,

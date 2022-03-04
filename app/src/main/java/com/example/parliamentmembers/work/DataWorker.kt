@@ -11,13 +11,14 @@ import retrofit2.HttpException
     Date: 20.2.2022
  */
 
+//WorkManager
 class DataWorker(appContext: Context, params: WorkerParameters):
         CoroutineWorker(appContext, params) {
 
-    companion object {
-        const val WORK_NAME = "com.example.parliamentmembers.work.DataWorker"
-    }
-
+    /*
+        Call refreshDB function, in case of exception
+        retry.
+     */
     override suspend fun doWork(): Result {
         try {
             MemberRepo.refreshDB()

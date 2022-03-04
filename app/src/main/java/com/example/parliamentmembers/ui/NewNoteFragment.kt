@@ -1,7 +1,6 @@
 package com.example.parliamentmembers.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +19,7 @@ import com.example.parliamentmembers.viewmodels.NewNoteViewModel
     Date: 3.3.2022
  */
 
+//Fragment for creating new notes.
 class NewNoteFragment : Fragment() {
 
     override fun onCreateView(
@@ -31,6 +31,11 @@ class NewNoteFragment : Fragment() {
 
         val viewModel = ViewModelProvider(this).get(NewNoteViewModel::class.java)
 
+        /*
+            When button is clicked add note to database, make
+            toast saying "Note added" and navigate back to
+            MemberFragment with arguments.
+         */
         binding.addNoteBtn.setOnClickListener {
             val args = NewNoteFragmentArgs.fromBundle(requireArguments())
 

@@ -10,11 +10,16 @@ import kotlinx.coroutines.launch
     Date: 1.2.2022
  */
 
+//ViewModel for MemberFragment.
 class MemberViewModel(args: Int): ViewModel() {
+    //Get members, notes and arguments.
     private val personNumber = args
     private val members = MemberRepo.members
     private val notes = MemberRepo.notes
 
+    /*
+        Filter notes and members by personNumber.
+     */
     val note = Transformations.map(notes) { list ->
         list.filter {
             it.personNumber == personNumber

@@ -20,6 +20,8 @@ import com.squareup.picasso.Picasso
     Date: 17.2.2022
  */
 
+
+//Fragment for holding individual member view and notes.
 class MemberFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +64,10 @@ class MemberFragment : Fragment() {
         viewModel.karma.observe(requireActivity()) { mp ->
             binding.karmaView.text = mp[0].karma.toString()
 
+            /*
+                When thumbs up button is clicked plus karma with 5
+                and update database by inserting member.
+             */
             binding.thumbUpBtn.setOnClickListener {
                 val newKarma = mp[0].karma.plus(5)
 
@@ -80,6 +86,10 @@ class MemberFragment : Fragment() {
                 )
             }
 
+            /*
+                When thumbs down button is clicked minus karma with 5
+                and update database by inserting member.
+            */
             binding.thumbDownBtn.setOnClickListener {
                 val newKarma = mp[0].karma.minus(5)
 
@@ -99,6 +109,7 @@ class MemberFragment : Fragment() {
             }
         }
 
+        //Observe notes and submit them to adapter.
         viewModel.note.observe(requireActivity()) {
             adapter.submitList(it)
         }
@@ -106,6 +117,7 @@ class MemberFragment : Fragment() {
         return binding.root
     }
 
+    //Create option menu
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.options_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -138,6 +150,7 @@ class MemberFragment : Fragment() {
 
             true
         }
+        //In case something else happens make a super constructor call
         else -> {
             super.onOptionsItemSelected(item)
         }

@@ -23,6 +23,7 @@ import com.squareup.picasso.Picasso
     Date: 25.2.2022
  */
 
+//Adapter for PartyMemberSearchFragment
 class PartyMemberListAdapter(private val context: Context): ListAdapter<ParliamentMember, PartyMemberViewHolder>(PartyMemberDiffCB()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PartyMemberViewHolder {
         val itemView = LayoutInflater.from(context).inflate(R.layout.mp_item_layout, parent, false)
@@ -37,6 +38,7 @@ class PartyMemberListAdapter(private val context: Context): ListAdapter<Parliame
         val iView = holder.itemView.findViewById<ImageView>(R.id.image_mpl)
         Picasso.get().load("https://avoindata.eduskunta.fi/${getItem(position).picture}").into(iView)
 
+        //OnClick navigate to MemberFragment with arguments.
         holder.itemView.setOnClickListener {
             val args = Bundle()
 
